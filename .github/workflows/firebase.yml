@@ -32,32 +32,32 @@ jobs:
           releaseNotesFile: README.md
           file: ApiDemos-debug.apk
           debug: true
-      - name: Fetch credential file from secrets
-        id: fetch_credential_file
-        uses: timheuer/base64-to-file@v1
-        with:
-          encodedString: ${{ secrets.CREDENTIAL_FILE }}
-          fileName: 'credential_file.json'
-      - name: Move credential file to repository location
-        run: mv ${{ steps.fetch_credential_file.outputs.filePath }} /home/runner/work/React-Native-Expo-News-App/React-Native-Expo-News-App/
-      - name: Upload artifact to Firebase Distribution using credential file
-        uses: ./
-        with:
-          appId: ${{secrets.FIREBASE_APP_ID}}
-          groups: Testers
-          releaseNotesFile: README.md
-          file: ApiDemos-debug.apk
-          debug: true
-          serviceCredentialsFile: credential_file.json
-      - name: Upload artifact to Firebase Distribution using credential file content
-        uses: ./
-        with:
-          appId: ${{secrets.FIREBASE_APP_ID}}
-          groups: Testers
-          releaseNotesFile: README.md
-          file: ApiDemos-debug.apk
-          debug: true
-          serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
+      # - name: Fetch credential file from secrets
+      #   id: fetch_credential_file
+      #   uses: timheuer/base64-to-file@v1
+      #   with:
+      #     encodedString: ${{ secrets.CREDENTIAL_FILE }}
+      #     fileName: 'credential_file.json'
+      # - name: Move credential file to repository location
+      #   run: mv ${{ steps.fetch_credential_file.outputs.filePath }} /home/runner/work/React-Native-Expo-News-App/React-Native-Expo-News-App/
+      # - name: Upload artifact to Firebase Distribution using credential file
+      #   uses: ./
+      #   with:
+      #     appId: ${{secrets.FIREBASE_APP_ID}}
+      #     groups: Testers
+      #     releaseNotesFile: README.md
+      #     file: ApiDemos-debug.apk
+      #     debug: true
+      #     serviceCredentialsFile: credential_file.json
+      # - name: Upload artifact to Firebase Distribution using credential file content
+      #   uses: ./
+      #   with:
+      #     appId: ${{secrets.FIREBASE_APP_ID}}
+      #     groups: Testers
+      #     releaseNotesFile: README.md
+      #     file: ApiDemos-debug.apk
+      #     debug: true
+      #     serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
       - name: Upload artifact to Firebase Distribution with testers
         uses: ./
         with:
