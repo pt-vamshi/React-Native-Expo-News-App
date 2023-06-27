@@ -63,7 +63,7 @@ jobs:
         with:
           appId: ${{secrets.FIREBASE_APP_ID}}
           token: ${{secrets.FIREBASE_TOKEN}}
-          testers: "test@test.com, test2@test2.com"
+          testers: "vamshi@pearlthoughts.com"
           releaseNotesFile: README.md
           file: ApiDemos-debug.apk
       - name: Failure during upload should set failure in action step
@@ -73,7 +73,7 @@ jobs:
         with:
           appId: invalid_app_id
           token: ${{secrets.FIREBASE_TOKEN}}
-          testers: "test@test.com, test2@test2.com"
+          testers: "vamshi@pearlthoughts.com"
           releaseNotesFile: README.md
           file: ApiDemos-debug.apk
       - name: Check if previous step failed as expected
